@@ -44,5 +44,12 @@ namespace DangTMHE181967WPF
             loginWindow.Show();
             this.Close();
         }
+
+        private void btnReport_Click(object sender, RoutedEventArgs e)
+        {
+            ReportWindow reportWindow = new ReportWindow();
+            reportWindow.Show();
+            this.Close();
+        }
     }
 }

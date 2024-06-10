@@ -1,4 +1,5 @@
 ﻿using BusinessObject;
+using Microsoft.Identity.Client.NativeInterop;
 using Repositories;
 using System;
 using System.Collections.Generic;
@@ -13,33 +14,37 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace DangTMHE181967WPF
 {
     /// <summary>
-    /// Interaction logic for BookingWindow.xaml
+    /// Interaction logic for ReportWindow.xaml
     /// </summary>
-    public partial class BookingWindow : Window
+    public partial class ReportWindow : Window
     {
 
         private IBookingReservationRepository bookingReservationRepository;
-        public BookingWindow()
+
+        public ReportWindow()
         {
             InitializeComponent();
             bookingReservationRepository = new BookingReservationRepository();
         }
 
-        public Customer Account { get; set; }
-
-        private void LoadBooking()
+        private void btnLoadReport_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                var bookings = bookingReservationRepository.GetByCustomerID(Account.CustomerID);
-                dgBookingHistory.ItemsSource = bookings;
+                DateTime startDate = dpStart.SelectedDate ?? DateTime.MinValue;
+                DateTime endDate = dpEnd.SelectedDate ?? DateTime.MaxValue;
+                if(startDate >= endDate)
+                {
+                    MessageBox.Show("Start date must be smaller than end date", "Generate report");
+                }
+                var bookings = bookingReservationRepository.GetBookingByDateRange(startDate, endDate);
+                dgData.ItemsSource = bookings;
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
 
             }
@@ -54,12 +59,9 @@ namespace DangTMHE181967WPF
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
-            CustomerWindow customerWindow = new CustomerWindow()
-            {
-                Account = Account
-            };
+            AdminWindow adminWindow = new AdminWindow();
             this.Close();
-            customerWindow.Show();
+            adminWindow.Show();
         }
 
         private void btnDetail_Click(object sender, RoutedEventArgs e)
@@ -72,17 +74,11 @@ namespace DangTMHE181967WPF
                 BookingDetailWindow detailWindow = new BookingDetailWindow
                 {
                     BookingID = booking.BookingReservationID,
-                    Account = Account,
-                    AdminOrCustomer = false
+                    AdminOrCustomer = true
                 };
                 this.Close();
                 detailWindow.ShowDialog();
             }
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            LoadBooking();
         }
     }
 }

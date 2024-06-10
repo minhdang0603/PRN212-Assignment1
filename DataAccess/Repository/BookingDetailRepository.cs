@@ -17,6 +17,12 @@ namespace Repositories
         public BookingDetail GetByBookingIdAndRoomID(int bookingID, int roomID) => BookingDetailDAO.Instance.GetBookingDetailsByBookingReservationIDAndRoomID(bookingID, roomID);
 
         public void RemoveBookingDetail(BookingDetail bookingDetail) => BookingDetailDAO.Instance.Delete(bookingDetail);
-        public void UpdateBookingDetail(BookingDetail bookingDetail) => BookingDetailDAO.Instance.Update(bookingDetail);    
+        public void UpdateBookingDetail(BookingDetail bookingDetail) => BookingDetailDAO.Instance.Update(bookingDetail);
+
+        public List<BookingDetail> GetByBookingID(int id)
+        {
+            List<BookingDetail> details = GetAll();
+            return details.Where(bd => bd.BookingReservationID == id).ToList();
+        }
     }
 }

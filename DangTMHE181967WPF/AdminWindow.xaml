@@ -5,11 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DangTMHE181967WPF"
         mc:Ignorable="d"
-        Title="Admin Window" Height="450" Width="800"
+        Title="Admin Window" Height="550" Width="800"
         WindowStartupLocation="CenterScreen">
     <Grid Background="AliceBlue">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
+            <RowDefinition Height="100"/>
             <RowDefinition Height="100"/>
             <RowDefinition Height="100"/>
             <RowDefinition Height="100"/>
@@ -26,7 +27,10 @@
         <Button Name="btnManageRoom" Grid.Row="2" 
                 Content="Manage Room" 
                 Margin="100, 20, 100, 20" Click="btnManageRoom_Click"></Button>
-        <Button Name="btnLogOut" Grid.Row="3" 
+        <Button Name="btnReport" Grid.Row="3" 
+        Content="View report" 
+        Margin="100, 20, 100, 20" Click="btnReport_Click"></Button>
+        <Button Name="btnLogOut" Grid.Row="4" 
                 Content="Log Out" 
                 Margin="100, 20, 100, 20" Click="btnLogOut_Click"></Button>
     </Grid>

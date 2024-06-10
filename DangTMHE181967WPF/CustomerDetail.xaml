@@ -50,8 +50,7 @@
         <DatePicker Name="dateBod" Grid.Row="5" Grid.Column="1" 
             Grid.ColumnSpan="2" Width="300" 
             HorizontalAlignment="Left" Margin="0,0,0,5"
-            SelectedDate="{Binding CustomerBirthday, 
-            Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    DisplayDate="{Binding CustomerBirthday}"/>
         <Label Content="Password" Grid.Row="6" Grid.Column="0"/>
         <TextBox Name="txtPassword" Grid.Row="6" Grid.Column="1" 
                  Grid.ColumnSpan="2" Width="300" 

@@ -14,5 +14,7 @@ namespace Repositories
         void AddBooking(BookingReservation bookingReservation);
         void RemoveBooking(BookingReservation bookingReservation);
         void UpdateBooking(BookingReservation bookingReservation);
+        List<BookingReservation> GetByCustomerID(int id);
+        List<BookingReservation> GetBookingByDateRange(DateTime start, DateTime end);
     }
 }

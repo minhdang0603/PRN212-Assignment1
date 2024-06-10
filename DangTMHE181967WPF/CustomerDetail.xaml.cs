@@ -58,6 +58,7 @@ namespace DangTMHE181967WPF
                 txtPassword.Text = CustomerInfo.Password;
                 cboStatus.SelectedValue = CustomerInfo.CustomerStatus;
                 dateBod.SelectedDate = CustomerInfo.CustomerBirthday;
+                dateBod.DisplayDate = CustomerInfo.CustomerBirthday;
             }
         }
 

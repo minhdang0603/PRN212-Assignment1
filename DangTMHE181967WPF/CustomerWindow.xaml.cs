@@ -52,7 +52,12 @@ namespace DangTMHE181967WPF
 
         private void btnViewHistory_Click(object sender, RoutedEventArgs e)
         {
-
+            BookingWindow booking = new BookingWindow
+            {
+                Account = Account
+            };
+            booking.Show();
+            this.Close();
         }
     }
 }

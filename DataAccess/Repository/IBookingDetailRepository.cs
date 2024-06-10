@@ -14,5 +14,6 @@ namespace Repositories
         void AddBookingDetail(BookingDetail bookingDetail);
         void UpdateBookingDetail(BookingDetail bookingDetail);
         void RemoveBookingDetail(BookingDetail bookingDetail);
+        List<BookingDetail> GetByBookingID(int id);
     }
 }
